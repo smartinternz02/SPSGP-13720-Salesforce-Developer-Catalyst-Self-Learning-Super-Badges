@@ -1,0 +1,26 @@
+@isTest
+public class TestVerifyDate {
+    @isTest static void Test_CheckDates_case1(){
+        Date D = VerifyDate.CheckDates(date.parse('01/01/2022'),date.parse('01/06/2022'));
+        System.assertEquals(date.parse('01/06/2022'),D);
+    }
+    @isTest static void Test_CheckDates_case2(){
+        Date D = VerifyDate.CheckDates(date.parse('01/01/2022'),date.parse('05/06/2022'));
+        System.assertEquals(date.parse('01/30/2022'),D);
+    }
+    @isTest static void Test_DateWithin30Days_case1(){
+    Boolean F = VerifyDate.DateWithin30Days(date.parse('01/01/2022'),date.parse('12/30/2021'));
+        System.assertEquals(false,F);
+    }
+    @isTest static void Test_DateWithin30Days_case2(){
+    Boolean F = VerifyDate.DateWithin30Days(date.parse('01/01/2022'),date.parse('02/02/2021'));
+        System.assertEquals(false,F);
+    }
+     @isTest static void Test_DateWithin30Days_case3(){
+    Boolean F = VerifyDate.DateWithin30Days(date.parse('01/01/2022'),date.parse('02/15/2022'));
+        System.assertEquals(true,F);
+    }
+    @isTest static void Test_SetEndOfMonthDate(){
+        Date returnDate= VerifyDate.SetEndOfMonthDate(date.parse('01/01/2022'));
+    }
+}
